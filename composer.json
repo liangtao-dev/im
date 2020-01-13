@@ -1,0 +1,21 @@
+{
+  "name": "taoge/im",
+  "description": "聊天服务",
+  "license": "MIT",
+  "type": "library",
+  "require": {
+    "php": ">=7.1.0"
+  },
+  "authors": [
+    {
+      "name": "梁涛",
+      "email": "liangtao.gz@foxmail.com"
+    }
+  ],
+  "minimum-stability": "dev",
+  "autoload": {
+    "psr-4": {
+      "TaoGe\\Im\\": "src/"
+    }
+  }
+}
