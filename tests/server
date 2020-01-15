@@ -1,0 +1,61 @@
+#!/usr/bin/env php
+<?php
+
+namespace TaoGe\Im;
+
+use Exception;
+
+/**
+ * 服务启动 php server.php
+ * 守护进程 daemonize => 1
+ * 关闭服务 1、查找这个端口号的PID  netstat -apn | grep 9502
+ *          2、杀死这个进程 kill -9 *****
+ */
+
+// 命令行入口文件
+// 加载基础文件
+require_once '../vendor/autoload.php';
+
+$config = [
+    // WebSocket服务端口
+    'port'            => 9502,
+    // 进程守护
+    'daemonize'       => 0,
+    // WebSocket服务协议
+    'protocol'        => 'wss',
+    // 通知推送秘钥
+    'pushSecurityKey' => 'uyzSPfViYejprFJPEzcvxsPuDRzZ6KUXgrRwqmvr',
+    // SSL证书
+    'ssl'             => [
+        'ssl_key_file'  => dirname(__DIR__) . '/assets/ssl/privkey.key',
+        'ssl_cert_file' => dirname(__DIR__) . '/assets/ssl/fullchain.crt',
+    ],
+    // 数据库信息
+    'dbConfig'        => [
+        // 主机地址
+        'host'      => '127.0.0.1',
+        // 用户名
+        'user'      => 'im_liangtao_top',
+        // 密码
+        'password'  => '58md8BCWPRZZNMGx',
+        // 数据库名
+        'database'  => 'im_liangtao_top',
+        // 端口
+        'port'      => 3306,
+        // 数据库表前缀
+        'prefix'    => 'abon_',
+        // 连接超时
+        'timeout'   => 0.5,
+        // 数据库编码默认采用utf8
+        'charset'   => 'utf8mb4',
+        // 连接池大小
+        'pool_size' => '3',
+    ]
+];
+
+// 应用初始化
+try {
+    (new App($config))->setDaemoniz(0)->run();
+} catch (Exception $e) {
+    echo $e->__toString() . PHP_EOL;
+}

@@ -8,11 +8,33 @@
 // +----------------------------------------------------------------------
 // | Author: TaoGe <liangtao.gz@foxmail.com>
 // +----------------------------------------------------------------------
-// | Version: 2.0 2020-01-13 16:24
+// | Version: 2.0 2019-11-27 22:18
 // +----------------------------------------------------------------------
+namespace TaoGe\Im\logic;
 
-require_once '../vendor/autoload.php';
+use Redis;
 
-use TaoGe\Im\Server;
+/**
+ * Class MyRedis
+ * @package TaoGe\Im\logic
+ */
+class MyRedis extends Redis
+{
+    private static $_instance = '';
 
-echo Server::Test();
+    public function __construct()
+    {
+        parent::__construct();
+        $this->connect('127.0.0.1', 6379);
+        $this->auth('uSog1Pm9');
+    }
+
+    public static function getInstance()
+    {
+        if (!self::$_instance instanceof MyRedis) {
+            self::$_instance = new MyRedis;
+        }
+        return self::$_instance;
+    }
+
+}

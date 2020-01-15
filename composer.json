@@ -3,9 +3,6 @@
   "description": "聊天服务",
   "license": "MIT",
   "type": "library",
-  "require": {
-    "php": ">=7.1.0"
-  },
   "authors": [
     {
       "name": "梁涛",
@@ -16,6 +13,24 @@
   "autoload": {
     "psr-4": {
       "TaoGe\\Im\\": "src/"
+    },
+    "files": [
+      "src/helper.php"
+    ]
+  },
+  "repositories": {
+    "packagist": {
+      "type": "composer",
+      "url": "https://mirrors.aliyun.com/composer/"
     }
+  },
+  "require": {
+    "php": ">=7.1.0",
+    "ext-json": "*",
+    "ext-redis": "*",
+    "ext-pdo": "*"
+  },
+  "require-dev": {
+    "eaglewu/swoole-ide-helper": "dev-master"
   }
 }

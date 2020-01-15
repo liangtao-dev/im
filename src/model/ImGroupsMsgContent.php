@@ -8,16 +8,17 @@
 // +----------------------------------------------------------------------
 // | Author: TaoGe <liangtao.gz@foxmail.com>
 // +----------------------------------------------------------------------
-// | Version: 2.0 2020-01-13 16:22
+// | Date: 2019-11-28 11:22
 // +----------------------------------------------------------------------
 
-namespace TaoGe\Im;
+namespace TaoGe\Im\model;
 
-
-class Server
+/**
+ * Class ImGroupsMsgContent
+ * @package TaoGe\Im\model
+ */
+class ImGroupsMsgContent extends Model
 {
-    public static function Test()
-    {
-        return 'hello word!';
-    }
+
 }
+
